@@ -3,4 +3,13 @@
 *.o
 *.txt
 *.orig
+*.so
+ .vscode/settings.json
+AxisACAPRust/.eap-install.cfg
+AxisACAPRust/.target-makefrag
+*.lock
+target/
+hello_curl/hellocurl
+hello_world/hello_world
+AxisACAPRust/websocket_new
 

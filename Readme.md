@@ -17,3 +17,19 @@ to stop your application type
 
 $ sudo apt-get install libprotobuf-c0-dev protobuf-c-compiler
 ```
+
+
+## Using cross and docker
+```bat
+
+
+> cargo install cross
+ 
+> cross test --target armv7-unknown-linux-gnueabihf
+
+> cross build --target=mips64-unknown-linux-gnuabi64
+
+> cp .\target\armv7-unknown-linux-gnueabihf\debug\websocket_new ..\..\
+
+
+```
