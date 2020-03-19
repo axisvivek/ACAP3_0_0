@@ -1,11 +1,29 @@
+extern crate syslog;
+
 use std::thread;
 use websocket::sync::Server;
 use websocket::OwnedMessage;
+use syslog::{Facility, Formatter3164};
+use log::{info};
 
+fn write_to_syslog(message_temp: String) {
+   let formatter = Formatter3164 {
+        facility: Facility::LOG_USER,
+        hostname: None,
+        process: "axis_acapwith_rust".into(),
+        pid: 0,
+    };
 
+    match syslog::unix(formatter) {
+        Err(e) => println!("impossible to connect to syslog: {:?}", e),
+        Ok(mut writer) => {
+            writer.err(&message_temp).expect("could not write error message");
+        }
+    }
+}
 
 fn main() {
-	println!("Starting websocket at {:?}", "Office");
+	info!("Starting websocket at {:?}", "Office");
 	let server = Server::bind("192.168.1.150:2794").unwrap();
     
 	for request in server.filter_map(Result::ok) {
@@ -21,6 +39,8 @@ fn main() {
 			let ip = client.peer_addr().unwrap();
 
 			println!("Connection from {}", ip);
+			let message = String::from("Connection from ".to_owned()+&(ip.to_string()));			
+			write_to_syslog(message);
             // Let's print all the names to stdout.
             let message = OwnedMessage::Text("Hello".to_string() +" "+ &ip.to_string());
 			     client.send_message(&message).unwrap();
