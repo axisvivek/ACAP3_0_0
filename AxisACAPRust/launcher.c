@@ -4,6 +4,7 @@
 //#include <unistd.h>
 #include <signal.h>
 #include <syslog.h>
+#include <axsdk/axparameter.h>
 
 // launcher: launches the main Rust executable
 // this is necessary since Axis application installer insists on checking which dynamic libs
@@ -17,7 +18,7 @@ void term(int signum)
 
 int main(int argc, char** argv)
 {
-  /* Open the syslog to report messages for "helloworld" */
+  /* Open the syslog to report messages for "axis_acapwith_rust" */
   openlog("axis_acapwith_rust", LOG_PID|LOG_CONS, LOG_USER);
   // set process group id equal to process id so the whole thing can be killed later
   setpgid(0, 0);
@@ -31,5 +32,6 @@ int main(int argc, char** argv)
   /* Choose between { LOG_INFO, LOG_CRIT, LOG_WARN, LOG_ERR }*/
   syslog(LOG_INFO, "Changed Directory!");
   syslog(LOG_INFO, "Starting Rust Process!");
+  closelog();
   return system("./websocket_new");
 } 
