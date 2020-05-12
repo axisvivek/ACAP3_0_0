@@ -17,7 +17,7 @@ to stop your application type
 
 $ sudo apt-get install libprotobuf-c0-dev protobuf-c-compiler
 ```
-
+> sudo service ssh --full-restart
 
 ## Using cross and docker
 ```bat
