@@ -1,7 +1,6 @@
 ```bash
 
-(base) vivek@VIVEK-PC:/mnt/d/WindowsSubsytemLinux/March2020/hello_world$ source /opt/axis/acapsdk/3.00.1/cortexa9hf-neon/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
-
+(base) vivek@VIVEK-PC:/mnt/d/WindowsSubsytemLinux/March2020/hello_world$ source /opt/axis/acapsdk/3.01.0/cortexa9hf-neon/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
 (base) vivek@VIVEK-PC:/mnt/d/WindowsSubsytemLinux/March2020/hello_world$ create-package.sh
 (base) vivek@VIVEK-PC:/mnt/d/WindowsSubsytemLinux/March2020/hello_world$ eap-install.sh install
 (base) vivek@VIVEK-PC:/mnt/d/WindowsSubsytemLinux/March2020/hello_world$ eap-install.sh start
